@@ -34,3 +34,6 @@ In order to render in your frontend you need to manually use the mermaid package
 
 - [ ] Document how to use in frontend
 - [ ] Write a helper package providing a serialiser for portable text
+- [ ] Link to mermaid docs in editor
+- [ ] Syntax highlighted editor
+- [ ] Polish and npm publishing
