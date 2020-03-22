@@ -2,6 +2,8 @@
 
 Add a [Mermaid](https://mermaid-js.github.io/mermaid/) graph input type for [Sanity CMS](http://sanity.io)
 
+![Screenshot](/sanity-plugin-mermaid.png)
+
 ```js
 sanity install mermaid
 ```
