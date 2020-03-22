@@ -5,18 +5,36 @@
   "author": "Raymond Julin <raymond.julin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d build"
+    "build": "babel src -d build",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.1"
+    "@babel/preset-react": "^7.9.1",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.3",
+    "precise-commits": "^1.0.2",
+    "prettier": "^2.0.1",
+    "standard-version": "^7.1.0"
   },
   "dependencies": {
     "debounce-fn": "^4.0.0",
     "mermaid": "^8.4.8",
     "prop-types": "^15.7.2",
     "react": "^16.13.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-commit": "precise-commits"
+    }
   }
 }
