@@ -1,0 +1,10 @@
+{
+  "paths": {
+    "source": "./src",
+    "compiled": "./build"
+  },
+  "parts": [{
+    "implements": "part:@sanity/base/schema-type",
+    "path": "schema/mermaid.js"
+  }]
+}

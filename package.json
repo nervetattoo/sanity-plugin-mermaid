@@ -1,0 +1,22 @@
+{
+  "name": "sanity-plugin-mermaid",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "author": "Raymond Julin <raymond.julin@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.1"
+  },
+  "dependencies": {
+    "debounce-fn": "^4.0.0",
+    "mermaid": "^8.4.8",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1"
+  }
+}
