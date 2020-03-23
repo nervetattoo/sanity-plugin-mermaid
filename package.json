@@ -33,7 +33,10 @@
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.0",
+    "@sanity/base": "^0.135.0",
+    "@sanity/components": "^0.135.0",
+    "@sanity/core": "^0.135.0"
   },
   "config": {
     "commitizen": {
