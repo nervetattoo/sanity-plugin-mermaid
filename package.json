@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-mermaid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/index.js",
   "author": "Raymond Julin <raymond.julin@gmail.com>",
   "license": "MIT",
@@ -32,7 +32,6 @@
     }
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   }
 }
