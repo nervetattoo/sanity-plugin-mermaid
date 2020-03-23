@@ -1,11 +1,11 @@
 {
   "name": "sanity-plugin-mermaid",
   "version": "1.0.1",
-  "main": "build/index.js",
+  "browser": "build/index.js",
   "author": "Raymond Julin <raymond.julin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d build",
+    "build": "babel src -d build --copy-files",
     "semantic-release": "semantic-release"
   },
   "keywords": [
