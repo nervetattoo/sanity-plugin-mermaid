@@ -1,28 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import T from 'prop-types'
-import mermaid from 'mermaid'
+import Badge from 'part:@sanity/components/badges/default'
+
+import useMermaid from '../../useMermaid'
 
 function Preview (props) {
   const value = props?.value?.definition
-  const key = props?.value?._key || ''
-  const outputId = `mermaid-${key}`
+  const [valid, html] = useMermaid(value)
 
-  useEffect(() => {
-    if (value) {
-      const output = document.getElementById(outputId)
-      output.innerHTML = ''
+  if (!valid) {
+    return <Badge color="warning">Invalid graph definition</Badge>
+  }
 
-      mermaid.mermaidAPI.render('faux', value, result => {
-        output.innerHTML = result
-      })
-    }
-  }, [value])
-
-  if (value) {
-
-    return (
-      <div id={outputId} />
-    )
+  if (html) {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />
   }
 
   return 'Empty'

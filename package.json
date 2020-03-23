@@ -33,7 +33,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "precise-commits"
     }
   }
 }
