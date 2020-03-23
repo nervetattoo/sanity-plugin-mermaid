@@ -1,25 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import T from 'prop-types'
 
-import PatchEvent, { set, unset, setIfMissing } from 'part:@sanity/form-builder/patch-event';
+import PatchEvent, { set, setIfMissing } from 'part:@sanity/form-builder/patch-event';
 
 import FormField from 'part:@sanity/components/formfields/default'
 import Fieldset from 'part:@sanity/components/fieldsets/default'
 import Textarea from 'part:@sanity/components/textareas/default'
-import Badge from 'part:@sanity/components/badges/default'
 
-import useMermaid from '../../useMermaid'
+const Mermaid = React.lazy(() => import('../Mermaid'))
 
 function Input ({
   level,
   type,
   ...props
 }) {
-  const key = props?.value?._key || ''
+  const key = props?.value?._key || ''
   const id = `mermaid-${key}`
   const [value, setValue] = useState(props?.value?.definition)
-  const [valid, html] = useMermaid(value, id)
-  const ref = useRef()
+  const isSSR = typeof window === 'undefined'
 
   const store = definition => {
     props.onChange(PatchEvent.from([
@@ -28,16 +26,9 @@ function Input ({
     ]))
   }
 
-  useEffect(() => {
-    const content = valid ? html : ''
-    ref.current.innerHTML = content
-    if (valid || value === '') {
-      store(value)
-    }
-  }, [valid, value, html])
-
   const handleChange = e => {
     setValue(e.target.value)
+    store(e.target.value)
   }
 
   return (
@@ -45,13 +36,23 @@ function Input ({
       <FormField level={level}>
         <Textarea onChange={handleChange} value={value} />
       </FormField>
-      <FormField level={level} label="Preview">
-        <div id={id} />
-        <div key="preview" ref={ref} />
-        {!valid && <Badge color="warning">Invalid graph definition</Badge>}
-      </FormField>
+      {!isSSR && (
+        <React.Suspense fallback={<div />}>
+          <FormField level={level} label="Preview">
+            <Mermaid graph={value} id={id} />
+          </FormField>
+        </React.Suspense>
+      )}
     </Fieldset>
   )
+}
+
+Input.propTypes = {
+  level: T.number,
+  type: T.shape({
+    title: T.string,
+    description: T.string
+  })
 }
 
 export default Input

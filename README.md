@@ -21,7 +21,6 @@ export default {
       title: 'Title',
       type: 'string',
     }, {
-      name: 'Graph',
       type: 'mermaid',
     }
   ]

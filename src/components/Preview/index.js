@@ -1,22 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import T from 'prop-types'
-import Badge from 'part:@sanity/components/badges/default'
 
-import useMermaid from '../../useMermaid'
+const Mermaid = React.lazy(() => import('../Mermaid'))
 
-function Preview (props) {
-  const value = props?.value?.definition
-  const [valid, html] = useMermaid(value)
+function Preview ({
+  value
+}) {
+  const key = value?._key || ''
+  const id = `mermaid-${key}`
+  const isSSR = typeof window === 'undefined'
 
-  if (!valid) {
-    return <Badge color="warning">Invalid graph definition</Badge>
+  if (isSSR) {
+    return null
   }
 
-  if (html) {
-    return <div dangerouslySetInnerHTML={{ __html: html }} />
-  }
+  return (
+    <React.Suspense fallback={<div />}>
+      <Mermaid id={id} graph={value?.definition} />
+    </React.Suspense>
+  )
+}
 
-  return 'Empty'
+Preview.propTypes = {
+  value: T.shape({
+    _key: T.string,
+    definitino: T.string
+  })
 }
 
 export default Preview
