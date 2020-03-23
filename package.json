@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d build",
-    "release": "standard-version",
     "semantic-release": "semantic-release"
   },
   "keywords": [
