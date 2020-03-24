@@ -17,6 +17,7 @@ export default {
   inputComponent: Input,
   preview: {
     select: {
+      _key: '_key',
       definition: 'definition',
     },
     component: Preview
