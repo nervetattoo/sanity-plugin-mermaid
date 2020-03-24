@@ -7,7 +7,7 @@ function Preview ({
   value
 }) {
   const key = value?._key || ''
-  const id = `mermaid-${key}`
+  const id = `sanity-plugin-mermaid-preview-${key}`
   const isSSR = typeof window === 'undefined'
 
   if (isSSR) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import T from 'prop-types'
 
 import PatchEvent, { set, setIfMissing } from 'part:@sanity/form-builder/patch-event';
@@ -13,9 +13,10 @@ function Input ({
   level,
   type,
   ...props
-}) {
+}, ref) {
   const key = props?.value?._key || ''
-  const id = `mermaid-${key}`
+  const id = `sanity-plugin-mermaid-input-${key}`
+  const textarea = useRef()
   const [value, setValue] = useState(props?.value?.definition)
   const isSSR = typeof window === 'undefined'
 
@@ -33,8 +34,8 @@ function Input ({
 
   return (
     <Fieldset legend={type.title} description={type.description} level={level}>
-      <FormField level={level}>
-        <Textarea onChange={handleChange} value={value} />
+      <FormField level={level} ref={ref}>
+        <Textarea onChange={handleChange} value={value} ref={textarea} />
       </FormField>
       {!isSSR && (
         <React.Suspense fallback={<div />}>
@@ -47,7 +48,9 @@ function Input ({
   )
 }
 
-Input.propTypes = {
+const WrappedInput = React.forwardRef(Input)
+
+WrappedInput.propTypes = {
   level: T.number,
   type: T.shape({
     title: T.string,
@@ -55,4 +58,4 @@ Input.propTypes = {
   })
 }
 
-export default Input
+export default WrappedInput
