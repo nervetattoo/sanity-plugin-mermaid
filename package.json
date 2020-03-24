@@ -30,13 +30,14 @@
   "dependencies": {
     "debounce-fn": "^4.0.0",
     "mermaid": "^8.4.8",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-icons": "^3.9.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
     "@sanity/base": "^0.135.0",
     "@sanity/components": "^0.135.0",
-    "@sanity/core": "^0.135.0"
+    "@sanity/core": "^0.135.0",
+    "react": "^16.8.0"
   },
   "config": {
     "commitizen": {

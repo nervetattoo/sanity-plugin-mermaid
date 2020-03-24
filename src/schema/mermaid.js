@@ -1,3 +1,4 @@
+import { FaProjectDiagram } from 'react-icons/fa'
 import Input from '../components/Input'
 import Preview from '../components/Preview'
 
@@ -5,6 +6,7 @@ export default {
   title: 'Mermaid graph',
   name: 'mermaid',
   type: 'object',
+  icon: FaProjectDiagram,
   fields: [
     {
       type: 'text',
