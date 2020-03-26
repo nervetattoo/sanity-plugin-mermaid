@@ -6,9 +6,10 @@ import useMermaid from '../useMermaid'
 export default function Mermaid ({
   graph,
   id,
+  options,
   fallback = 'Invalid graph definition'
 }) {
-  const [valid, html] = useMermaid(graph, id)
+  const [valid, html] = useMermaid(graph, id, options)
   const ref = useRef()
 
   useEffect(() => {

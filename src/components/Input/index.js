@@ -40,7 +40,7 @@ function Input ({
       {!isSSR && (
         <React.Suspense fallback={<div />}>
           <FormField level={level} label="Preview">
-            <Mermaid graph={value} id={id} />
+            <Mermaid graph={value} id={id} options={type?.options} />
           </FormField>
         </React.Suspense>
       )}

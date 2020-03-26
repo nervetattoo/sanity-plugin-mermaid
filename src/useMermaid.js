@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
 import mermaid from 'mermaid'
 
-mermaid.mermaidAPI.initialize({
-  startOnLoad: true,
-})
-
-export default function useMermaid(graph = '', id = 'mermaid') {
+export default function useMermaid(graph = '', id = 'mermaid', options = {}) {
   const [svg, setSvg] = useState('')
+
+  useEffect(() => {
+    mermaid.mermaidAPI.initialize({
+      startOnLoad: true,
+      theme: options.theme || 'neutral',
+    })
+  }, [])
 
   useEffect(() => {
     try {

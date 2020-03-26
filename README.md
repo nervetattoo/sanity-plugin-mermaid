@@ -2,6 +2,8 @@
 
 Add a [Mermaid](https://mermaid-js.github.io/mermaid/) graph input type for [Sanity CMS](http://sanity.io)
 
+Read more about [using the plugin in this blog post](https://raymondjulin.com/blog/drawing-diagrams-in-sanity-with-mermaid-js)
+
 ![Screenshot](/sanity-plugin-mermaid.png)
 
 ```js
@@ -31,8 +33,6 @@ In order to render in your frontend you need to manually use the mermaid package
 
 ## TODO
 
-- [ ] Document how to use in frontend
 - [ ] Write a helper package providing a serialiser for portable text
 - [ ] Link to mermaid docs in editor
 - [ ] Syntax highlighted editor
-- [ ] Polish and npm publishing
