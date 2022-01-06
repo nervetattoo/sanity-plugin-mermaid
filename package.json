@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "debounce-fn": "^4.0.0",
-    "mermaid": "^8.4.8",
+    "mermaid": "^8.13.8",
     "prop-types": "^15.7.2",
     "react-icons": "^3.9.0"
   },
